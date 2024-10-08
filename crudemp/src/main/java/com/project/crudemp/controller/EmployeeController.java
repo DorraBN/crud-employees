@@ -30,7 +30,7 @@ public List<Emplyee>getAllEmployees(){
 }
 
 
-@PostMapping("/create")
+@PostMapping("/employees/create")
 public Emplyee createEmploye(@RequestBody Emplyee e)
 {
 return employeeRepository.save(e);
@@ -42,12 +42,12 @@ public ResponseEntity<Emplyee> getEmployeeById(@PathVariable long id) {
     return ResponseEntity.ok(emp);
 }
 
-@DeleteMapping("/delete/{id}")
+@DeleteMapping("/employees/delete/{id}")
 public void deleteEmployeeById(@PathVariable Long id)
 {
     employeeRepository.deleteById(id);
 }
-@PutMapping("/update/{id}")
+@PutMapping("/employees/update/{id}")
 public ResponseEntity<Emplyee> update(@PathVariable Long id, @RequestBody Emplyee empDetails) {
     Emplyee emp = employeeRepository.findById(id)
         .orElseThrow(() -> new ResourceNotFoundException("employee not found"));
